@@ -1,0 +1,9 @@
+function Play({size, color}) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fillRule="evenodd" clipRule="evenodd" d="M9.537 18.023C8.871 18.446 8 17.968 8 17.179V6.82199C8 6.03299 8.871 5.55399 9.537 5.97799L17.674 11.158C18.292 11.551 18.292 12.452 17.674 12.845L9.537 18.023Z" fill={color}/>
+    </svg>   
+  )
+}
+
+export default Play
