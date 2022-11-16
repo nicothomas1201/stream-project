@@ -4,9 +4,15 @@ import Header from '../components/header'
 import Sidebar from '../components/sidebar'
 import Main from '../components/main'
 import Footer from '../components/footer'
+import { useEffect } from 'react'
+import getStreams from '../functions/get-streams'
 
 
 export default function Home() {
+  useEffect(() => {
+    getStreams('helix').then(res => console.log(res))
+  }, [])
+
   return (
     <Layout>
       <Head>
