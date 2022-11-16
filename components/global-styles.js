@@ -22,6 +22,7 @@ const GlobalStyles = createGlobalStyle`
     --body1-bold: 700 1rem/1.5rem Inter; 
     --body2-bold: 700 0.875rem/1.5rem Inter; 
     --body2-regular: 400 0.875rem/1.5rem Inter; 
+    --logo: 400 2rem/normal Bebas Neue; 
     --caption-regular: 400 0.75rem/1rem Inter; 
     --caption-bold: 700 0.75rem/1rem Inter; 
   }
