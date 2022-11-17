@@ -1,8 +1,20 @@
-import getApiAuthorization from "./api-authorization"
 import { BASE_API, clientId } from "../db";
+import getApiAuthorization from "./api-authorization";
 
-async function getStreams() {
-  let url = `${BASE_API}/helix/streams`
+async function getInfoUsers( data ) {
+  let usersLogin = null
+  let user = ''
+
+  if(data.length <= 100){
+    usersLogin = data.map( ( item, index ) => item.user_login)
+  }
+
+  if(usersLogin){
+    user = usersLogin.join('&login=')
+  }  
+
+
+  let url = `${BASE_API}/helix/users?login=${user}`
   let { access_token, expires_in, token_type } = await getApiAuthorization()
 
   token_type =
@@ -20,9 +32,10 @@ async function getStreams() {
     headers
   })
 
+  // console.log( await result.json())
+
   return await result.json()
-  
   
 }
 
-export default getStreams
+export default getInfoUsers

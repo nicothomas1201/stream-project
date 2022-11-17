@@ -6,12 +6,24 @@ import Main from '../components/main'
 import Footer from '../components/footer'
 import { useEffect } from 'react'
 import getStreams from '../functions/get-streams'
+import { useState } from 'react'
+import getInfoUsers from '../functions/get-info-users'
 
 
 export default function Home() {
-  useEffect(() => {
-    getStreams('helix').then(res => console.log(res))
+  let [ streams, setStreams ] = useState(null)
+  let [ userData, setUserData ] = useState(null)
+
+  useEffect(() => { 
+    getStreams().then(res => setStreams(res))
+    
   }, [])
+
+  useEffect(() => {
+    if(streams){
+      getInfoUsers(streams.data).then( res => setUserData(res))
+    }
+  }, [streams])
 
   return (
     <Layout>
@@ -22,7 +34,9 @@ export default function Home() {
 
       <Header />
       <Sidebar />
-      <Main />
+      <Main 
+        streams={streams ? streams.data : null}
+        userData={userData ? userData.data : null} />
       <Footer />
 
 
