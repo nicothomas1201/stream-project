@@ -7,6 +7,12 @@ const MainStyled = styled.main`
   color: var(--white-1);
   overflow: auto;
 
+  .streams-container{
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, 21rem);
+    grid-gap: 1.5rem;
+    place-content: center;
+  }
 `
 
 function Main({ streams, userData }) {
@@ -15,18 +21,18 @@ function Main({ streams, userData }) {
   if(streams && userData){
     return (
       <MainStyled>
-        {
-          streams.map( ( streamData, streamIndex ) => {
-            let user = userData.filter( item => streamData.user_login === item.login)
+        <div className='streams-container'>
+          {
+            streams.map( ( streamData, streamIndex ) => {
+              let user = userData.filter( item => streamData.user_login === item.login)
 
-            return <LiveStream 
-              streamData={streamData} 
-              userData={user[0]}
-              key={streamIndex}/>
-
-            
-          }) 
-        }
+              return <LiveStream 
+                streamData={streamData} 
+                userData={user[0]}
+                key={streamIndex}/>
+            }) 
+          }
+        </div>
       </MainStyled> 
     )
   }
