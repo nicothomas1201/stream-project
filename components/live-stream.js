@@ -7,6 +7,7 @@ import Avatar from './avatar'
 
 
 const LiveStreamStyled = styled.div`
+  cursor: pointer; 
   .thumbnail{
     position: relative;
     img{

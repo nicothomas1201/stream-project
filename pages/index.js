@@ -38,12 +38,6 @@ export default function Home() {
         streams={streams ? streams.data : null}
         userData={userData ? userData.data : null} />
       <Footer />
-
-
-
-
-
-      
     </Layout>
   )
 }
