@@ -12,6 +12,7 @@ const MainStyled = styled.main`
     grid-template-columns: repeat(auto-fill, 21rem);
     grid-gap: 1.5rem;
     place-content: center;
+    margin-block-end: 100px;
   }
 `
 
