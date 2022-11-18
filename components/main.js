@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { startTransition, useEffect, useState } from 'react'
 import LiveStream from './live-stream'
+import getInfoUserByStream from '../functions/get-info-user-by-stream'
 
 const MainStyled = styled.main`
   grid-area: main;
@@ -25,11 +25,11 @@ function Main({ streams, userData }) {
         <div className='streams-container'>
           {
             streams.map( ( streamData, streamIndex ) => {
-              let user = userData.filter( item => streamData.user_login === item.login)
+              let user = getInfoUserByStream(userData, streamData)
 
               return <LiveStream 
                 streamData={streamData} 
-                userData={user[0]}
+                userData={user}
                 key={streamIndex}/>
             }) 
           }

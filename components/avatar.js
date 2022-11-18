@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Image from 'next/image'
 
 const AvatarStyled = styled.div`
-  max-inline-size: 2rem;
+  inline-size: 2rem;
   block-size: 2rem;
   border-radius: 50%;
   overflow: hidden;

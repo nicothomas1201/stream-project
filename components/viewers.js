@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { useState } from 'react'
+import formatViewers from '../functions/format-viewers'
 
 const ViewersStyled = styled.div`
   position: absolute;
@@ -15,20 +16,10 @@ const ViewersStyled = styled.div`
 
 function Viewers({ viewers }) {
   // let [ formatViewers, setViewers ] = useState() 
-  let formatViewers = viewers
-  if( viewers >= 1000 && viewers <= 9999){
-    let string = viewers.toString()
-    formatViewers = `${string.slice(0, 1)} k`
-  } else if( viewers >= 10000 && viewers <= 99999){
-    let string = viewers.toString()
-    formatViewers = `${string.slice(0, 2)} k`
-  } else if( viewers >= 100000 && viewers <= 999999){
-    let string = viewers.toString()
-    formatViewers = `${string.slice(0, 3)} k`
-  }
+  
   return (
     <ViewersStyled>
-      {formatViewers} Espectadores
+      {formatViewers( viewers )} Espectadores
     </ViewersStyled>
     
   )

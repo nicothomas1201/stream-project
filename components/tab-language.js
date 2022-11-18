@@ -13,8 +13,7 @@ const TabLanguageStyled = styled.div`
 
 function TabLanguage({ lan }) {
 
-  
-      return <TabLanguageStyled>{ lan }</TabLanguageStyled>
+  return <TabLanguageStyled>{ lan }</TabLanguageStyled>
    
 }
 

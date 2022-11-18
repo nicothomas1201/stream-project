@@ -45,10 +45,7 @@ const LiveStreamStyled = styled.div`
 function LiveStream({ streamData, userData }) {
   let { profile_image_url, display_name } = userData
   let { viewer_count, thumbnail_url, title, language } = streamData
-  let url = setThumbnailStream(thumbnail_url)
-  console.log(language)
-
-  
+  let url = setThumbnailStream(thumbnail_url)  
   
 
 

@@ -33,7 +33,10 @@ export default function Home() {
       </Head>
 
       <Header />
-      <Sidebar />
+      <Sidebar
+        streams={streams ? streams.data : null}
+        userData={userData ? userData.data : null} 
+      />
       <Main 
         streams={streams ? streams.data : null}
         userData={userData ? userData.data : null} />
