@@ -5,13 +5,18 @@ async function getInfoUsers( data ) {
   let usersLogin = null
   let user = ''
 
-  if(data.length <= 100){
-    usersLogin = data.map( ( item, index ) => item.user_login)
+  if(Array.isArray(data)){
+    if(data.length <= 100){
+      usersLogin = data.map( ( item, index ) => item.user_login)
+    }
+  
+    if(usersLogin){
+      user = usersLogin.join('&login=')
+    }  
+  } else {
+    user = data
   }
 
-  if(usersLogin){
-    user = usersLogin.join('&login=')
-  }  
 
 
   let url = `${BASE_API}/helix/users?login=${user}`

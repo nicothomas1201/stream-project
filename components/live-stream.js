@@ -5,6 +5,7 @@ import Live from './live'
 import Viewers from './viewers'
 import Avatar from './avatar'
 import TabLanguage from './tab-language'
+import Link from 'next/link'
 
 
 const LiveStreamStyled = styled.div`
@@ -51,19 +52,21 @@ function LiveStream({ streamData, userData }) {
 
   return (
     <LiveStreamStyled>
-      <div className='thumbnail'>
-        <Live />
-        <Viewers viewers={viewer_count} />
-        <Image src={url} alt="" width={336} height={188} />
-      </div>
-      <div className='stream-details'>
-        <Avatar avatar={profile_image_url} />
-        <div className='stream-description'>
-          <h4 className='title'>{title}</h4>
-          <span className='username'>{display_name}</span>
-          <TabLanguage lan={language} />
+      <Link href={`/${display_name}`} >
+        <div className='thumbnail'>
+          <Live />
+          <Viewers viewers={viewer_count} />
+          <Image src={url} alt="" width={336} height={188} />
         </div>
-      </div>
+        <div className='stream-details'>
+          <Avatar avatar={profile_image_url} />
+          <div className='stream-description'>
+            <h4 className='title'>{title}</h4>
+            <span className='username'>{display_name}</span>
+            <TabLanguage lan={language} />
+          </div>
+        </div>
+      </Link>
     </LiveStreamStyled>
     
   )

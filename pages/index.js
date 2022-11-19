@@ -8,22 +8,10 @@ import { useEffect } from 'react'
 import getStreams from '../functions/get-streams'
 import { useState } from 'react'
 import getInfoUsers from '../functions/get-info-users'
+import StreamsList from '../components/streams-list'
 
 
-export default function Home() {
-  let [ streams, setStreams ] = useState(null)
-  let [ userData, setUserData ] = useState(null)
-
-  useEffect(() => { 
-    getStreams().then(res => setStreams(res))
-    
-  }, [])
-
-  useEffect(() => {
-    if(streams){
-      getInfoUsers(streams.data).then( res => setUserData(res))
-    }
-  }, [streams])
+export default function Home({streamsData, userData}) {
 
   return (
     <Layout>
@@ -34,13 +22,27 @@ export default function Home() {
 
       <Header />
       <Sidebar
-        streams={streams ? streams.data : null}
+        streams={streamsData ? streamsData.data : null}
         userData={userData ? userData.data : null} 
       />
-      <Main 
-        streams={streams ? streams.data : null}
-        userData={userData ? userData.data : null} />
+      <Main>
+        <StreamsList 
+          streams={streamsData ? streamsData.data : null}
+          userData={userData ? userData.data : null} />
+      </Main>
       <Footer />
     </Layout>
   )
+}
+
+export async function getServerSideProps(){
+  const streamsData = await getStreams()
+  const userData = await getInfoUsers(streamsData.data)
+
+  return {
+    props: {
+      streamsData,
+      userData
+    }
+  }
 }
